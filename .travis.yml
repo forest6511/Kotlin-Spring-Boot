@@ -1,3 +1,5 @@
+sudo: required
+
 language: java
 jdk:
   - openjdk8
@@ -18,3 +20,4 @@ before_install:
 
 script:
   - ./gradlew test build
+  - docker-compose stop
