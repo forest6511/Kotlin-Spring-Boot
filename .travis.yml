@@ -14,10 +14,10 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - sudo docker-compose up
+  - sudo docker-compose
   - chmod +x gradlew
   - chmod +x gradle/wrapper/gradle-wrapper.jar
-  - sleep 30
+  - sleep 120
 
 script:
   - ./gradlew test build
