@@ -19,5 +19,5 @@ before_install:
   - sleep 180
 
 script:
-  - ./gradlew test build
+  - ./gradlew test build --scan -s
   - docker-compose stop
