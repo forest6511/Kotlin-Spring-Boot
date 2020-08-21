@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/forest6511/Kotlin-Spring-Boot.svg?branch=master)](https://travis-ci.org/forest6511/Kotlin-Spring-Boot)
 # Motivation
 
 Study following tech
