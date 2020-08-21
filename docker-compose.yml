@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   db2:
     image: ibmcom/db2
