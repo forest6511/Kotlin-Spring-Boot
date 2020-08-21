@@ -1,6 +1,8 @@
+language: java
+jdk:
+  - oraclejdk8
 services:
   - docker
-
 env:
   - DOCKER_COMPOSE_VERSION: 1.8.0
 
@@ -9,4 +11,10 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - docker-compose up
+  - docker-compose up -d
+  - chmod +x gradlew
+  - chmod +x gradle/wrapper/gradle-wrapper.jar
+  - sleep 15
+
+script:
+  - ./gradlew test build
