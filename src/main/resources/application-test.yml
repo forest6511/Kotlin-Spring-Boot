@@ -1,0 +1,28 @@
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+  application:
+    name: demoApp
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbc-url: jdbc:db2://localhost:50000/testdb
+    username: db2inst1
+    password: password
+    hikari:
+      auto-commit: false
+  task:
+    execution:
+      thread-name-prefix: my-app-task-
+      pool:
+        core-size: 1
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: my-app-scheduling-
+      pool:
+        size: 1
