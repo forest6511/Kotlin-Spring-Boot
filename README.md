@@ -31,6 +31,14 @@ mydb2  |
 mydb2  | db2updv115 completed successfully for database 'testdb'. 
 ```
 
+### Testing and Archive executable jar
+
+```
+> ./gradlew clean test build
+> cd build
+> java -jar demo-0.0.1-SNAPSHOT.jar
+```
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
