@@ -14,7 +14,7 @@ before_install:
   - docker-compose up
   - chmod +x gradlew
   - chmod +x gradle/wrapper/gradle-wrapper.jar
-  - sleep 30
+  - sleep 60
 
 script:
   - ./gradlew test build
