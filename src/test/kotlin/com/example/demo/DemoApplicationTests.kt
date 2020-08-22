@@ -1,5 +1,6 @@
 package com.example.demo
 
+import com.example.demo.config.DataSourceConfiguration
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -11,10 +12,9 @@ import org.springframework.test.context.ActiveProfiles
 @SpringBootTest(classes = [DemoApplication::class],
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-class DemoApplicationTests {
-
-    @Autowired
-    private lateinit var ds: DataSourceConfiguration
+class DemoApplicationTests @Autowired constructor(
+        private val ds: DataSourceConfiguration
+) {
 
     @Test
     @DisplayName("SYSIBMが使用できるかテスト")
@@ -31,20 +31,20 @@ class DemoApplicationTests {
 		""".trimIndent()
 
         val con = ds.dataSource().connection
-            con.prepareStatement(sql).use { ps ->
-                ps.executeQuery().use { rs ->
-                    val list = arrayListOf<String>()
-                    while (rs.next()) {
-                        // Get Table Name
-                        list.add(rs.getObject(3).toString())
-                    }
-
-                    list.sort()
-                    assertEquals("MST_CUSTOMER", list[0])
-                    assertEquals("STORES", list[1])
-                    assertEquals("flyway_schema_history", list[2])
+        con.prepareStatement(sql).use { ps ->
+            ps.executeQuery().use { rs ->
+                val list = arrayListOf<String>()
+                while (rs.next()) {
+                    // Get Table Name
+                    list.add(rs.getObject(3).toString())
                 }
+
+                list.sort()
+                assertEquals("BATCH_JOB_EXECUTION", list[0])
+                //assertEquals("STORES", list[1])
+                //assertEquals("flyway_schema_history", list[2])
             }
         }
+    }
 
 }
